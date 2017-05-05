@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block title %}
+<title>Ask</title>
+{% endblock title %}
+
+
+{% block left_part %}
+    <div class="text-left my_header">
+        <h2 class="custom-title-left" style="color: #c12e2a" >New question</h2>
+    </div>
+<form action="{% url 'ask' %}" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-danger"> Ask </button>
+  {% endbuttons %}
+</form>
+{% endblock left_part %}

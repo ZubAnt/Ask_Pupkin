@@ -1,0 +1,33 @@
+{% for answer in answers %}
+{% load static %}
+<div class="panel panel-default">
+    <div class="row">
+        <div class="col-lg-3" style="padding-top: 10px;">
+            <img class="centerAvatar" src="{% static "img/avatar/sid.png" %}" class="img-responsive center-block" alt="img" width="110" height="110">
+        </div>
+
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-12 center-block">
+                    <h4><p class="my_text">{{ answer.text }}</p></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col-lg-3">
+            <button type="button" class="btn btn-default btn-xs"><span
+                        class="glyphicon glyphicon-minus"></span></button>
+            <b>5</b>
+            <button type="button" class="btn btn-default btn-xs"><span
+                        class="glyphicon glyphicon-plus"></span></button>
+        </div>
+        <div class="col-lg-9" class="checkbox">
+            <label>
+                    <input type="checkbox"> <b>Correct!</b>
+                </label>
+        </div>
+    </div>
+</div>
+{% endfor %}

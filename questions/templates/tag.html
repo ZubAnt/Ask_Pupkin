@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Tags</title>
+{% endblock title %}
+
+{% block left_part %}
+<div class="row" style="padding-left: 15px;">
+    <h2 id="new_question" class="my_header"> Tag: {{ tag.name }} </h2>
+</div>
+
+{% for question in questions %}
+    {% include "question_item.html" %}
+{% endfor %}
+
+{% include "paginator.html" %}
+
+{% endblock left_part %}

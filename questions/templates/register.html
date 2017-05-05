@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block title %}
+<title>Test Form</title>
+{% endblock title %}
+
+
+{% block left_part %}
+    <div class="text-left">
+        <h2 class="custom-title-left">Sign Up</h2>
+    </div>
+<form action="{% url 'signup' %}" method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-danger"> Register </button>
+  {% endbuttons %}
+</form>
+{% endblock left_part %}
+
