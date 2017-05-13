@@ -16,26 +16,16 @@ class QuestionsManager(models.Manager):
     def get_new_questions(self):
         q_list = self.order_by('-pub_date')
         return q_list
-        # return Questions.objects.fill_questions(q_list)
 
     def get_best_questions(self):
         q_list = self.order_by('-rating')[:100]
         return Questions.objects.fill_questions(q_list)
-
-    def get_answers_by_id(self, q_id):
-        return AnswersManager.get_answers_for_question_by_id(Answers.objects, q_id)
 
     def get_tags_by_id(self, q_id):
         return self.filter(id=q_id)
 
     def get_questions_by_tag(self, tag):
         return self.filter(tags=tag).order_by('-pub_date')
-
-    def fill_questions(self, q_list):
-        for q in q_list:
-            q.tag_list = self.get_tags_by_id(q.id)
-            q.answers_count = self.get_count_of_answers(q.id)
-        return q_list
 
 
 class AnswersManager(models.Manager):

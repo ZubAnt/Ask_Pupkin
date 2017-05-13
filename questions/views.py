@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, resolve_url
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from questions.forms import RegisterForm, LoginForm, AskForm, AnswerForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from questions.models import Questions, Answers, Tags
 questions_pag = []
@@ -59,6 +57,11 @@ def question_view(request, question_id):
                                              'question_id': question_id,
                                              'answers': answers,
                                              'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(resolve_url('hot'))
 
 
 def login_view(request):
